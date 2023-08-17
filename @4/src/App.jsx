@@ -38,21 +38,14 @@ const[p2,Setp2]=useState(
   // const player1Turn = true;
 
   const rollDiceOnTap = () => {
-    let randomNumber = Math.floor(Math.random()* 6)+1; 
+    let randomNumber = Math.floor(Math.random()* 2)+1; 
 
     switch(randomNumber){
-      case 1:
+      case 1: 
         break;
       case 2:
         break;
-      case 3:
-        break;
-      case 4:
-        break;
-      case 5:
-        break;
-      case 6:
-        break;
+      
 
       default:
 
