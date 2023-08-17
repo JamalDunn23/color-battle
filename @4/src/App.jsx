@@ -13,25 +13,31 @@ function App() {
   const[playerFalse,SetPlayerFalse]=useState([])
   const[reallyTrue,SetReallyTrue]=useState("true✅")
   const[reallyFalse,SetReallyFalse]=useState("false❌")
-
-  const[p1,Setp1]=useState(
-
-{
-    name: "Shaka",
-    color: "orchid",
-    hitpoints: 100,
-    turn: reallyTrue,
-
-});
-
-const[p2,Setp2]=useState(
+  const[reallyTrue2,SetReallyTrue2]=useState("true✅")
+  const[reallyFalse2,SetReallyFalse2]=useState("false❌")
+  const[hitPoints,SetHitPoints]=useState(10)
+  const[hitPoints2,SetHitPoints2]=useState(10)
+  const[win,SetWin]=useState(0)
   
-{
-    name: "Jamal",
-    color: "cornflowerblue",
-    hitpoints: 100,
-    turn: reallyFalse,
-  });
+
+//   const[p1,Setp1]=useState(
+
+// {
+//     name: "Shaka",
+//     color: "orchid",
+//     hitpoints: hitPoints,
+//     turn: reallyTrue,
+
+// });
+
+// const[p2,Setp2]=useState(
+  
+// {
+//     name: "Jamal",
+//     color: "cornflowerblue",
+//     hitpoints: '100',
+//     turn:reallyFalse2,
+//   });
   
   const dice = 0;
   
@@ -60,68 +66,183 @@ const[p2,Setp2]=useState(
 
     }
   }
+
+  function showPrompt() {
+    const message = "Game Over! Your score is 0. Play again?";
+
+    return message
+  }
 const handleShaka=(e)=>{
   e.preventDefault()
   
-  // const SHakasGo= document.querySelector("button.Shaka")
-
-  // p1.turn ? SHakasGo.setAttribute=playerFalse:null
-
- Setp1(
- p1.turn= "reallyFalse")
- Setp2(
-  p2.turn= "reallyTrue")
-
+   const ShakasGo= document.querySelector("button.Shaka")
+   const JamalsGo=document.querySelector('button.Jamal')
+   
 
   
 
+  
 
+  const ShakasValue= SetHitPoints(hitPoints -Math.floor(Math.random() * 10))
 
+// const Shak= document.querySelector('h2.Shaka').textContent
+   SetReallyTrue(reallyFalse)
+   SetReallyFalse2(reallyTrue2)
+   SetWin(ShakasValue)
+  
+  ShakasGo.setAttribute("hidden","hidden")
+  JamalsGo.removeAttribute("hidden")
+
+  if(hitPoints<0){
+
+    prompt('You WINNNNN  Shaka 🤣')
+  }
+
+ 
+  
   
   
   
   }
 
 
+  const handleJamal=(e)=>{
+    e.preventDefault()
+    
+     const ShakasGo= document.querySelector("button.Shaka")
+     const JamalsGo=document.querySelector('button.Jamal')
+
+    const JamalsValue= SetHitPoints2(hitPoints2 -Math.floor(Math.random() * 10))
+     SetReallyTrue(reallyTrue2)
+   SetReallyFalse2(reallyFalse)
+  //  SetWin(JamalsValue)
+
+
+  
+   
+  
+    JamalsGo.setAttribute("hidden","hidden")
+     ShakasGo.removeAttribute("hidden")
+     if(hitPoints2<0){
+
+     prompt('You WINNNNN Jamal  💫')
+       }
+   
+  
+    
+  
+  
+  
+    
+    
+    
+    }
+ const flipButton=()=>{
+
+ const[isFLipped,setIsFLipped]=useState(false);
+
+ const handleFlip=()=>{
+
+
+ setIsFLipped(!isFLipped);
+
+ };
+
+return(<><div>
+
+
+  <button onClick={handleFlip }>{playerTrue}</button>
+
+  {isFLipped ? <div>{playerTrue}</div>:<div>{playerFalse}</div>} 
+
+  
+</div>
+</>);
+
+
+
+  }
+
+
+  const flipButton2=()=>{
+
+    const[isFLipped,setIsFLipped]=useState(false);
+   
+    const handleFlip=()=>{
+   
+   
+    setIsFLipped(!isFLipped);
+   
+    };
+   
+   return(<><div>
+   
+   
+     <button onClick={handleFlip}>{playerTrue}</button>
+   
+     {isFLipped ? <div>{playerFalse}</div>:<div>{playerTrue}</div>} 
+   
+     
+   </div>
+   </>);
+   
+   
+   
+     }
 
 
 
 
-const handleJamal=()=>{console.log('button clicked')}
+
+
+
   return (
     <>
       <div>
         <header>
     <h1>Color Battle !</h1>
+    {win}
 
         </header>
       </div>
+<>
+
+      <h1>Shaka</h1>
+
+</>
 
 
       <div className='p1'>
         
          
           
-          <h1>{p1.name}</h1>
-          <h2>HitPoints:{p1.hitpoints}</h2>
-          <h1>my Turn:{p1.turn ? reallyTrue:reallyFalse}</h1>
+         
+          <h2 className='Shaka'>{hitPoints}</h2>
+          <h2>My Turn= {reallyTrue}</h2>
+           
           <div className='player1'></div>
-          {/* <button onClick={player2.turn=reallyTrue}>Attack!💫</button> */}
-
-          <div><button className='Shaka' type="click" onClick={handleShaka}>{playerTrue}</button></div>
+            <button  className="Shaka" onClick={handleShaka}>Attack!💫</button>  
        
           
       </div>
           
+        <h1>Jamal</h1>
           
       <div className='p2'>
         
          
           
-        <h1>{p2.name}</h1>
-        <h2>HitPoints:{p2.hitpoints}</h2>
-        <h1>my Turn: {p2.turn ? reallyFalse:reallyTrue}</h1>
-        <div className='player2'><button className='Jamal' onClick={handleJamal}>{playerFalse}</button></div>
+        <h2 className='Jamal'>HitPoints:{hitPoints2}</h2>
+        <h2>My turn = {reallyFalse2}</h2>
+         
+        <div className='player2'>
+        
+          
+          
+          <button className='Jamal' hidden="hidden" onClick={handleJamal}>Attack!💫</button> 
+          </div>
+          
+          
      
         
     </div>
