@@ -15,8 +15,8 @@ function App() {
   const[reallyFalse,SetReallyFalse]=useState("false❌")
   const[reallyTrue2,SetReallyTrue2]=useState("true✅")
   const[reallyFalse2,SetReallyFalse2]=useState("false❌")
-  const[hitPoints,SetHitPoints]=useState(10)
-  const[hitPoints2,SetHitPoints2]=useState(10)
+  const[hitPoints,SetHitPoints]=useState(30)
+  const[hitPoints2,SetHitPoints2]=useState(30)
   const[win,SetWin]=useState(0)
   
 
@@ -93,7 +93,7 @@ const handleShaka=(e)=>{
   ShakasGo.setAttribute("hidden","hidden")
   JamalsGo.removeAttribute("hidden")
 
-  if(hitPoints<0){
+  if(hitPoints<=0){
 
     prompt('You WINNNNN  Shaka 🤣')
   }
@@ -123,7 +123,7 @@ const handleShaka=(e)=>{
   
     JamalsGo.setAttribute("hidden","hidden")
      ShakasGo.removeAttribute("hidden")
-     if(hitPoints2<0){
+     if(hitPoints2<=0){
 
      prompt('You WINNNNN Jamal  💫')
        }
@@ -198,10 +198,11 @@ return(<><div>
 
   return (
     <>
+    <div className='border'>
       <div>
         <header>
     <h1>Color Battle !</h1>
-    {win}
+   
 
         </header>
       </div>
@@ -225,6 +226,8 @@ return(<><div>
        
           
       </div>
+      </div>
+      <div className='border2'>
           
         <h1>Jamal</h1>
           
@@ -244,7 +247,7 @@ return(<><div>
           
           
      
-        
+          </div>
     </div>
         
         
